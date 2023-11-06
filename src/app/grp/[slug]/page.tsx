@@ -1,4 +1,5 @@
 import MiniCreatePost from "@/components/MiniCreatePost";
+import PostFeed from "@/components/PostFeed";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -37,6 +38,7 @@ const page = async ({ params }: PageProps) => {
       <h1 className="font-bold text-3xl md:text-4xl h-14">grp/{group.name}</h1>
       <ul className="list-none">
         <MiniCreatePost session={session} />
+        <PostFeed initialPosts={group.posts} groupName={group.name} />
       </ul>
     </>
   );

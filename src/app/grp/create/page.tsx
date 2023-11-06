@@ -26,14 +26,14 @@ const page = () => {
         name: input,
       };
 
-      const { data } = await axios.post("/api/group", payload);
+      const { data } = await axios.post("/api/grp", payload);
       return data as string;
     },
     onError: (err) => {
       if (err instanceof AxiosError) {
         if (err.response?.status === 409) {
           return toast({
-            title: "Subreddit already exists.",
+            title: "Community already exists.",
             description: "Please choose a different name.",
             variant: "destructive",
           });
@@ -41,7 +41,7 @@ const page = () => {
 
         if (err.response?.status === 422) {
           return toast({
-            title: "Invalid subreddit name.",
+            title: "Community subreddit name.",
             description: "Please choose a name between 3 and 21 letters.",
             variant: "destructive",
           });
@@ -77,7 +77,7 @@ const page = () => {
           </p>
           <div className="relative">
             <p className="absolute text-sm left-0 w-8 inset-y-0 grid place-items-center text-zinc-400">
-              grp/
+              grp /
             </p>
             <Input
               value={input}
